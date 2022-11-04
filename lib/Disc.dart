@@ -9,6 +9,8 @@ class Disc {
   double glide;
   double turn;
   double fade;
+  bool owned;
+  bool inBag;
 
-  Disc(this.make, this.model, this.color, this.weight, this.speed, this.glide, this.turn, this.fade);
+  Disc(this.make, this.model, this.color, this.weight, this.speed, this.glide, this.turn, this.fade, this.owned, this.inBag);
 }

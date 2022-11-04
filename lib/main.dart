@@ -38,6 +38,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final myDiscs = context.watch<BagViewModel>().myBag;
     final owned = context.watch<BagViewModel>().owned;
+    final recs = context.watch<BagViewModel>().recs;
 
     // App bar for our application, should be the same on each screen
     PreferredSizeWidget _buildAppBar() {
@@ -78,6 +79,14 @@ class MyHomePage extends StatelessWidget {
       }
     }
 
+    Widget fullBagWarning() {
+      if(myDiscs.length == 10) {
+        return Text(
+          "Your bag is full!", style: TextStyle(color: Colors.pinkAccent),);
+      }
+      return Text("");
+    }
+
     // Our body, should be different for each page
     Widget _buildBody() {
       return Container(
@@ -106,8 +115,9 @@ class MyHomePage extends StatelessWidget {
                         Navigator.push(context,
                           MaterialPageRoute(builder: (context) => FullBag()));
                       },
-                      child: const Text('View full bag'),
+                      child: const Text('View bag'),
                     ),
+                    fullBagWarning()
                   ]
                 ),
             ),
@@ -142,8 +152,29 @@ class MyHomePage extends StatelessWidget {
 
             // This area will recommend discs to collect
             Expanded(child: Container(
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black45)
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: recs.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final currDisc = recs[index];
+                      return Center(child: Column(
+                          children: [
+                            Padding(padding: EdgeInsets.only(top:10)),
+                            Text("${recs[index].make} ${recs[index].model} ${recs[index].weight}", style: TextStyle(color: Colors.black),),
+                            Text("${recs[index].speed} ${recs[index].glide} ${recs[index].turn} ${recs[index].fade}", style: TextStyle(color: Colors.black)),
+                            Expanded(
+                                child: FittedBox(child: Container(
+                                    padding: EdgeInsets.all(30),
+                                    decoration: BoxDecoration(color: Palette.getColor("${recs[index].color}"), shape: BoxShape.circle),
+                                    child: FittedBox(fit: BoxFit.fitWidth, child: Text("${recs[index].model}", style: TextStyle(color: Colors.black)))
+                                ))
+                            ),
+                            TextButton(onPressed: () {
+                              context.read<BagViewModel>().acquireDisc(currDisc);
+                            },
+                                child: Text("Acquire", style: TextStyle(color: Colors.green),))
+                          ]));
+                    }
                 )
             )),
           ],

@@ -25,11 +25,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         body: Center(
             child: ListView(children: <Widget>[
-      const Image(
-        image: AssetImage('assets/images/face2face.png'),
-        width: 400,
-        height: 400,
-      ),
       ElevatedButton(
         style: style,
         onPressed: () {},
