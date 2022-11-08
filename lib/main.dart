@@ -71,7 +71,7 @@ class MyHomePage extends StatelessWidget {
             itemCount: myDiscs.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                decoration: BoxDecoration(color: Palette.getColor("${myDiscs[index].color}"), borderRadius: BorderRadius.circular(10)),
+                decoration: BoxDecoration(color: Palette.getColor("${myDiscs[index].color}").discColor, borderRadius: BorderRadius.circular(10)),
                 height: 90,
                 width: 9,
               );}
@@ -137,8 +137,8 @@ class MyHomePage extends StatelessWidget {
                         Expanded(
                             child: FittedBox(child: Container(
                                 padding: EdgeInsets.all(30),
-                                decoration: BoxDecoration(color: Palette.getColor("${owned[index].color}"), shape: BoxShape.circle),
-                                child: FittedBox(fit: BoxFit.fitWidth, child: Text("${owned[index].model}", style: TextStyle(color: Colors.black)))
+                                decoration: BoxDecoration(color: Palette.getColor("${owned[index].color}").discColor, shape: BoxShape.circle),
+                                child: FittedBox(fit: BoxFit.fitWidth, child: Text("${owned[index].model}", style: TextStyle(color: Palette.getColor("${owned[index].color}").fontColor)))
                             ))
                         ),
                         TextButton(onPressed: () {
@@ -165,8 +165,8 @@ class MyHomePage extends StatelessWidget {
                             Expanded(
                                 child: FittedBox(child: Container(
                                     padding: EdgeInsets.all(30),
-                                    decoration: BoxDecoration(color: Palette.getColor("${recs[index].color}"), shape: BoxShape.circle),
-                                    child: FittedBox(fit: BoxFit.fitWidth, child: Text("${recs[index].model}", style: TextStyle(color: Colors.black)))
+                                    decoration: BoxDecoration(color: Palette.getColor("${recs[index].color}").discColor, shape: BoxShape.circle),
+                                    child: FittedBox(fit: BoxFit.fitWidth, child: Text("${recs[index].model}", style: TextStyle(color: Palette.getColor("${recs[index].color}").fontColor)))
                                 ))
                             ),
                             TextButton(onPressed: () {

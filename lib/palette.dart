@@ -1,39 +1,46 @@
 import 'package:flutter/material.dart';
+import 'ColorPair.dart';
 
 class Palette {
   Palette._();
 
-  static Color? getColor(String col){
+  static ColorPair getColor(String col){
     switch(col){
       case "Pink":
-        return Colors.pink;
+        return ColorPair(Colors.pink, Colors.white);
       case "Red":
-        return Colors.red;
+        return ColorPair(Colors.red, Colors.white);
       case "Orange":
-        return Colors.orange;
+        return ColorPair(Colors.orange, Colors.black);
       case "Yellow":
-        return Colors.yellow;
+        return ColorPair(Colors.yellow, Colors.black);
       case "Green":
-        return Colors.green;
+        return ColorPair(Colors.green, Colors.white);
       case "Blue":
-        return Colors.blue;
+        return ColorPair(Colors.blue, Colors.white);
       case "Purple":
-        return Colors.purple;
+        return ColorPair(Colors.purple, Colors.white);
       case "Brown":
-        return Colors.brown;
+        return ColorPair(Colors.brown, Colors.white);
+      case "Yellow Green":
+        return ColorPair(Colors.lightGreenAccent[400], Colors.black);
+      case "Light Orange":
+        return ColorPair(Colors.orange[100], Colors.black);
       case "Light Green":
-        return Colors.lightGreen[200];
+        return ColorPair(Colors.lightGreen[200], Colors.black);
       case "Light Blue":
-        return Colors.lightBlue[100];
+        return ColorPair(Colors.lightBlue[100], Colors.black);
       case "Light Pink":
-        return Colors.pink[200];
+        return ColorPair(Colors.pink[200], Colors.black);
+      case "Light Brown":
+        return ColorPair(Color(0xEEDDC0AA), Colors.black);
       case "Glow":
-        return Colors.lightGreen[100];
+        return ColorPair(Colors.lightGreen[100], Colors.black);
       case "Black":
-        return Colors.black;
+        return ColorPair(Colors.black, Colors.white);
       case "White":
       default:
-        return Colors.white;
+        return ColorPair(Colors.white, Colors.black);
     }
   }
 }
